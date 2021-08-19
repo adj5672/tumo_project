@@ -62,7 +62,7 @@ export default {
       })
       .then(res => {
         this.$store.state.selectedArticle = res.data.feed
-        this.$router.push({ name: 'articleDetail', params: { userIdx: res.data.feed.userIdx ,boardIdx: this.boardIdx }})
+        this.$router.push({ name: 'articleDetail', params: { userIdx: res.data.feed.userIdx ,boardIdx: res.data.feed.boardIdx }})
       })
     },
   }

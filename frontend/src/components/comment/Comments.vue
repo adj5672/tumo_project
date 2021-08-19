@@ -8,7 +8,7 @@
         <div v-for="(data, idx) in commentData" :key="idx">
           <div class="d-flex align-items-center">
             <img src="@/assets/main/user.png" alt="user" style="width: 1em;">
-            <span class="px-2 fw-bold">{{ data.nickname }}</span>
+            <span class="px-2 fw-bold" @click="moveToProfile(data.nickname)" style="cursor: pointer;">{{ data.nickname }}</span>
             <span class="me-2" style="font-size: 0.75rem;">{{ data.updateAt.substring(0, 16) }}</span>
             <el-popconfirm
               v-if="data.userIdx === $store.state.user_info.id"
@@ -129,6 +129,9 @@ export default {
           this.getComments()
         }
       })
+    },
+    moveToProfile: function (nickname) {
+      this.$router.push({ name: 'profile', params: { nickname: nickname}})
     }
   },
   created: function () {
